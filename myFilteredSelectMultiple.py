@@ -3,7 +3,6 @@ from django.conf import settings
 
 class myFilteredSelectMultiple(forms.SelectMultiple):
     template_name = 'myFilteredSelectMultiple/forms/widgets/myFilteredSelectMultiple.html'
-    #option_template_name = 'myFilteredSelectMultiple/forms/widgets/myFilteredSelectMultiple_option.html'
     verbose_name = ""
     label_chooseall = "Choose all"
     title_choose = "Choose"
