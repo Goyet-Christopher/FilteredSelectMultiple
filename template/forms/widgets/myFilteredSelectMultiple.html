@@ -1,0 +1,37 @@
+<div id="{{ widget.id }}_divselector" class="{{ widget.class }}" name="{{ widget.class }}" > 
+    <div class="{{ widget.class }}-available">
+        <h2>{{ widget.title_available }}<span class="help help-tooltip help-icon" title="{{ widget.available_title_help_text }}"></span></h2>
+        <p id="{{ widget.id }}_filter" class="{{ widget.class }}-filter">
+            <label for="{{ widget.id }}_input">
+                <span class="help-tooltip search-label-icon" title="{{ widget.available_input_help_text }}"></span>
+            </label>
+            <input type="text" placeholder="Filter" id="{{ widget.id }}_input">
+        </p>
+        <select name="{{ widget.name }}_old" id= "{{ widget.id }}_from" {% include "django/forms/widgets/attrs.html" %}>
+            {% for group_name, group_choices, group_index in widget.optgroups %}
+                {% if group_name %}
+                    <optgroup label="{{ group_name }}">
+                {% endif %}
+                {% for option in group_choices %}
+                    {% include option.template_name with widget=option %}
+                {% endfor %}
+                {% if group_name %}
+                    </optgroup>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <a title="{{ widget.title_chooseall }}" href="#" id="{{ widget.id }}_add_all_link" class="{{ widget.class }}-chooseall active">{{ widget.label_chooseall }}</a>
+    </div>
+    <ul class="{{ widget.class }}-chooser">
+        <li><a title="{{ widget.title_choose }}" href="#" id="{{ widget.id }}_add_link" class="{{ widget.class }}-add">{{ widget.label_choose }}</a>
+        </li>
+        <li><a title="{{ widget.title_remove }}" href="#" id="{{ widget.id }}_remove_link" class="{{ widget.class }}-remove">{{ widget.label_remove }}</a>
+        </li>
+    </ul>
+    <div class="{{ widget.class }}-chosen">
+        <h2>{{ widget.title_chosen }}<span class="help help-tooltip help-icon" title="{{ widget.chosen_title_help_text }}"></span></h2>
+        <select id="{{ widget.id }}_to" name="{{ widget.name }}" {% include "django/forms/widgets/attrs.html" %}>
+        </select>
+        <a title="{{ widget.title_removeall }}" href="#" id="{{ widget.id }}_remove_all_link" class="{{ widget.class }}-clearall">{{ widget.label_removeall }}</a>
+        </div>
+</div>
