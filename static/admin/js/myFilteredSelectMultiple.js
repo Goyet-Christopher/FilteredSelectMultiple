@@ -284,6 +284,10 @@ var FSM = {
 };
 window.FSM = FSM;
 
+function $id(id) {
+	return document.getElementById(id);
+}
+
 function findForm(node) {
     // returns the node of the form containing the given node
     if (node.tagName.toLowerCase() !== 'form') {
